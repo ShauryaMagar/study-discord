@@ -29,6 +29,7 @@
         {% endfor %}
     </div>
     <div>
+        <h5>{{room_count}} rooms available</h5>
         <a href="{% url 'create-room' %}" >
             Create Room
         </a>
@@ -37,8 +38,10 @@
             <div>
                 <br>
                 <span>@{{room.host.username}}</span>
+                {% if request.user == room.host %}
                 <a href = "{% url 'update-room' room.id %}"> Edit</a> <br>
                 <a href = "{% url 'delete-room' room.id %}"> Delete</a>
+                {% endif %}
                 <!-- this type of href uses name as reference instead of directory instead of path -->
                 <a href="{% url 'room' room.id %}"><p>{{room.id}} -- <strong>{{room.name}}</strong> </p></a>
                 <small>{{room.topic}}</small>
