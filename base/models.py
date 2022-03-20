@@ -13,7 +13,7 @@ class Room(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True) #null= True means it cannot be blank. blank ensures that on form submit, the value isn't empty
-    #participants
+    participants = models.ManyToManyField(User, related_name='participants', blank=True) # We already have a field associated to Users, hence we have to add related name
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True) #takes time stamp when we first create the instance
 
