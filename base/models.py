@@ -29,5 +29,7 @@ class Message(models.Model):
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['-updated', '-created'] # -updated means order is descending. updated means order is ascending. First order by updated, then by created
     def __str__(self):
         return self.body[0:50]
