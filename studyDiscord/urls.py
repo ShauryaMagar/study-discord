@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')), #tells django that whenever user goes to this route, check the urls file in base app
+    path('api/', include('base.api.urls')) #tells django to check api in base/api
 ]
